@@ -1,53 +1,31 @@
 'use strict';
 
+var answer = ['y', 'yes'];
+
 //Ask the User their name, store in console.  
-var affirmed_name = prompt('Hello! What is your name?'); 
-console.log('Asked for a name, result:'+name); 
+var affirmed_name = prompt('Hello! What is your name?');
+console.log('Asked for a name, result:'+name);
 
 //Q1. kicks off the if/else statement below. 
 var horror = prompt(affirmed_name+'Do you know if I like the Horror genra or not?', 'Yes or No'); 
-console.log('Asked if user knew if I liked Horror or not, result:'+ horror)
+console.log('Asked if user knew if I liked Horror or not, result:'+ horror);
 
 //Q2.If the user answered that they knew I liked horror, this runs. 
 
-if(horror === 'y'.toLowerCase){
-  var book = prompt('Spot on! I enjoy most forms of it immensly, but most of all I love reading horror novels and comic books. '+name+' have we ever discussed books?', 'Yes or No')
-  console.log('Asked if user and I had ever discussed books, result:'+book); 
-  var book = prompt('Spot on! I enjoy most forms of it immensly, but most of all I love reading horror novels and comic books. '+name+' have we ever discussed books?', 'Yes or No'); 
-  console.log('Asked if user and I had ever discussed books, result:'+book); 
-  //Q3.y
-  if (book === 'y'.toLowerCase){
-      var get_to_know =('Wow,'+affirmed_name+' it sounds like we might know each other. Can you tell me a bit about yourself?')
-      console.log('Asked if I could get to know user:'+ get_to_know); 
+if(answer.includes(horror.tolowercase)){
+   var book = prompt('Spot on! I enjoy most forms of it immensly, but most of all I love reading horror novels and comic books. '+name+' have we ever discussed books?', 'Yes or No')
+   console.log('Asked if user and I had ever discussed books, result:'+book); 
+
 //Q3.yes
-  }else if(book === 'yes'.toLowerCase){
+  }else if(answer.includes(get_to_know.toLowerCase){
       var get_to_know =('Wow,'+affirmed_name+' it sounds like we might know each other. Can you tell me a bit about yourself?')
       console.log('Asked if I could get to know user:'+ get_to_know); 
 //Q3.n
-  }else if( book === 'n'.toLowerCase){
-//Q3.no
-  }else if(book === 'no'.toLowerCase)
-
-//Q2.2 
-}else if(horror ==='yes'.toLowerCase){
-    var book = prompt('Spot on! I enjoy most forms of it immensly, but most of all I love reading horror novels and comic books. '+name+' have we ever discussed books?', 'Yes or No'); 
-    console.log('Asked if user and I had ever discussed books, result:'+book); 
-    //Q3.y.2 
-    if (book === 'y'.toLowerCase){
-        var get_to_know =('Wow,'+affirmed_name+' it sounds like we might know each other. Can you tell me a bit about yourself?')
-        console.log('Asked if I could get to know user:'+ get_to_know); 
-    //Q3.yes.2
-    }else if(book === 'yes'.toLowerCase){
-        var get_to_know =('Wow,'+affirmed_name+' it sounds like we might know each other. Can you tell me a bit about yourself?')
-        console.log('Asked if I could get to know user:'+ get_to_know); 
-    //Q3.n.2
-    }else if( book === 'n'.toLowerCase){
-    //Q3.no.2
-    }else if(book === 'no'.toLowerCase)
-
-
-    
-
+  }else if(answer.includes(get_to_know.toLowerCase){
+    //Q5.no
+    var like_comic = prompt ('Do you like comics?', 'Yes or No'); 
+    console.log('Asked if user likes comics or not, result:'+ like_comic);
+  } 
 //Q4.If the user answered that they did not know if I liked horror, this runs. 
 }else if(horror ==='n'.tolowercase){
     var likeart = prompt('Well, I do. And let me tell you, Vampires are the best! I also like fictional spider based monsters (but not the real ones!), and stories that play on our extensial fears. Do you think I like art?', 'Yes or No'); 
@@ -59,7 +37,7 @@ if(horror === 'y'.toLowerCase){
     
         
     //Q4. if user answered book question n, they are directed here
-  } else {
+} else {
     //book n
   }
 
@@ -67,7 +45,7 @@ if(horror === 'y'.toLowerCase){
 }else{
    
 }
-
+//need to fix all these. 
 var art = prompt(' What is your favorite style of art?', 'Type it here!'); 
 console.log('Asked for users favorite style of art, result:'+art); 
 alert('Well'+affirmed_name+'I quite enjoy'+art+' myself! Fancy that.'); 
@@ -84,14 +62,8 @@ if (like_comic === 'y'){
   console.log('Asked user what their favorite comic was'+comic);
   var avil_date = prompt('Oh, Wow! '+comic+'? That is awesome! Woundn\'t it be cool if an issue was done in '+art+' style? Well, '+affirmed_name+' you seem really cool. We should get '+drink+'s some time! When works for you?'); 
   console.log('Asked user when they would be avaliable for drinks, returned:'+avil_date); 
-}else{
-  // like comic N
-}
 
+}else if (likeComic.toLowerCase() == 'no'){
+        alert(likeComic+'? Not everyone does, thats why I asked. Well, '+name+' you seem pretty cool, if you ever want to talk about '+art+' or learn about comics I would always be happy to grab a '+drink); 
+    }
 
-// drops in at art 
-
-
-//Y/N question 5 - q2 n, Well..... let me tell you abit about what I like! drops in at comics.  
-//var answer = prompt ()
-//console.log 
