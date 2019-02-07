@@ -17,10 +17,18 @@ Want to get a drink?
     }
   After that it was mostly tidying up, a bit of HTML here, a bit of CSS there, and viola! 
 
+  When transitioning from 2 arrays to one multidimensional array, I referred to two different sources - both MDN and Javascript.info. On MDN, the most useful page for multidimensional array syntax was acutally Indexed Collections, however Javascript.info's feature that allows you to open a plunker window and play around with a snip of code was intrigal to my understanding fully how they work. 
+
 Enjoy! 
 
 ps. we should get a drink! 
 pps. my partner is a python dev. In this house, we use snake_case. 
 
+  Javascript.info Arrays: 
+  https://javascript.info/array
+
   MDN Arrays: 
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
+
+  MDN Indexed Collections: 
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections 
