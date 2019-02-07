@@ -20,6 +20,7 @@ Want to get a drink?
 Enjoy! 
 
 ps. we should get a drink! 
+pps. my partner is a python dev. In this house, we use snake_case. 
 
   MDN Arrays: 
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
