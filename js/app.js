@@ -1,6 +1,7 @@
 'use strict';
 
 var answer = ['y', 'yes'];
+var worst = ['n', 'no']
 
 //Ask the User their name, store in console.
 var affirmed_name = prompt('Hello! What is your name?', 'Your Name Here');
@@ -22,15 +23,19 @@ if(answer.includes(horror.toLowerCase())){
     var get_to_know = ('Wow,'+affirmed_name+' it sounds like we might know each other. Can you tell me a bit about yourself?');
     console.log('Asked if I could get to know user:'+ get_to_know);
 
-  }else if(answer.includes(book.toLowerCase())){
+  }else if(worst.includes(book.toLowerCase())){
     var like_comic = prompt ('Do you like comics?', 'Yes or No');
     console.log('Asked if user likes comics or not, result:'+ like_comic);
+  }else{
+    alert('Hmmmm....I\'m not sure what your saying...')
   }
 
 //Q4.If the user answered that they did not know if I liked horror, this runs.
-}else{
+}else if(worst.includes(horror.toLowerCase())){
   var like_art = prompt('Well, I do. And let me tell you, Vampires are the best! I also like fictional spider based monsters (but not the real ones!), and stories that play on our extensial fears. Do you think I like art?', 'Yes or No');
   console.log('Asked if the user thought I liked art, result: '+like_art);
+}else{
+  alert('That dosent seem like the kind of answer I asked for...')
 }
 
 var art = prompt(' What is your favorite style of art?', 'Type it here!');
@@ -51,6 +56,9 @@ if (answer.includes(like_comic.toLowerCase())){
   var avil_date = prompt('Oh, Wow! '+comic+'? That is awesome! Woundn\'t it be cool if an issue was done in '+art+' style? Well, '+affirmed_name+' you seem really cool. We should get '+drink+'s some time! When works for you?');
   console.log('Asked user when they would be avaliable for drinks, returned:'+avil_date);
 
-}else{
-  alert(like_comic+'? Not everyone does, thats why I asked. Well, '+affirmed_name+' you seem pretty cool, if you ever want to talk about '+art+' or learn about comics I would always be happy to grab a '+drink);
+} else if(worst.includes(like_comic.toLowerCase())){
+  alert(like_comic+'? Not everyone does, thats why I asked. Well, '+affirmed_name+' you seem pretty cool, if you ever want to talk about '+art+' or learn about comics I would always be happy to grab a '+drink+'. When are you free?');
+  console.log('Asked user when they would be avaliable for drinks, returned:'+avil_date); 
+} else {
+  alert('Are you sure you really want to be talking to me?');
 }
