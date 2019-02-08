@@ -1,7 +1,16 @@
 body{
 
   font-family: Verdana, Geneva, Tahoma, sans-serif; 
-  background-color: #b48ee5; 
+  background-color: #c9b4e4; 
+  
+}
+article {
+  background-color: #e5d5b7; 
+  height: 100%; 
+  width: 75%; 
+  margin: 10%;
+  border-width: 10px;  
+  padding: 2.5%;  
 
 }
   

@@ -4,11 +4,11 @@
 
 let user_answer = [
 
-]
+];
 let answer = [
   ['y', 'yes', 'ya','i do', 'ye', 'yee', 'yaa', 'why yes, i do', 'affirmative', 'mmhmm', 'yes, mx'],
   ['n', 'no', 'nope', 'i do not', 'nyop', 'yeet', 'as a matter of fact, i do not', 'negaitve', 'no, mx'],
-  ['That dosent seem like the kind of answer I asked for...','Hmmmm....I\'m not sure what your saying...','Are you sure you really want to be talking to me?', 'We should get '+drink+'s some time! When works for you?', 'Are you sure you really want to be talking to me?']
+  ['That dosent seem like the kind of answer I asked for...','Hmmmm....I\'m not sure what your saying...','Are you sure you really want to be talking to me?', 'We should get drinks some time! When works for you?', 'Are you sure you really want to be talking to me?'],
   ['Question 1', 'Hello! What is your name?'],
   ['Question 2', ' Do you know if I like the Horror genre or not?'],
   ['Question 3', 'Have we ever discussed books?'],
@@ -105,6 +105,8 @@ case true:
   var comic = prompt('What is your favorite comic?');
   console.log('Asked user what their favorite comic was '+ comic);
   user_answer.push(comic);
+  console.log(answer);
+  console.log(answer[2]);
   var avil_date = prompt ('Oh, Wow! '+comic+'? That is awesome! Woundn\'t it be cool if an issue was done in '+art+' style? Well, '+affirmed_name+' you seem really cool.'+ answer[2][3]);
   console.log('Asked user when they would be avaliable for drinks, returned:'+avil_date);
   user_answer.push(avil_date);
@@ -119,23 +121,38 @@ default:
   break;
 }
 
-//loop 1 - How many cats to I have? (ref answers [])
-//4 tries
-
 for(var i = 0; i < 5; i++){
   var cats = (answer[10][1]);
-  var user_cats = prompt ('How many cats do you think I have?');
+  var user_cats = prompt ('How many cats do you think I have?', 'Answer with a number!');
   if (user_cats === (answer[10][1])){
     alert('That is correct! I have '+cats+'! It took you '+i+' tries to guess that.');
     break;
-  }
-
-  console.log('Asked user how many cats they thought I had, result:' +user_cats);
-  user_answer.push(user_cats);
-
-//feedback on how many tries (alert i?)
+  }else if(user_cats > 2){
+    alert('Oh man, thats way more cats than I have. But you know, that is the dream.');
+  } //need to indicate if the guess was too high or too low
 }
-//feed back on how many tries
+
+console.log('Asked user how many cats they thought I had, result:' +user_cats);
+user_answer.push(user_cats);
+
+// feedback on how many tries (alert i?)
+
+
+var e = 1;
+var flag=false;
+while (e < 7){
+  var user_cat_name = prompt ('What is one of the names I might call my cat(s)?');
+  for (var o=0; o<answer[13]; o++){
+    if (user_cat_name === answer[13][o]){
+      flag=true;
+    }
+  }
+  if (flag){
+    alert('How did you know I call, '+user_cat_name+' '+user_cat_name+'? It only took you '+e+' tries!');
+    break;
+  }
+}
+
 //loop 2 - What one of the names I might call my one of my cat(s)?
 //6 tries
 //stretch: alternate text for guessing salem vs bynx
