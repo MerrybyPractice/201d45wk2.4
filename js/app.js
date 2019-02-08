@@ -1,10 +1,30 @@
 'use strict';
 
-//multi-dimensional array, holds all potential answers for these questions
+/*Still need: 
 
+  add var and counter for tracking true answers then alert that tells the user how they did.
+
+  functioning for and while loops
+
+Stretch: 
+
+  customized answers for loop starting around 170 depending on which cats name they pick (could make 2 arrays at answer[13] or answer [13] and answer [14]) 
+  
+  Write user answers to page, under the corresponding question. Possibly have questions appear on page as they are asked? Given the structure of this I am not sure where to start - good weekend project. 
+
+  improve CSS 
+
+  possibly clean up all questions into a loop format? 
+
+  move all strings into the array - significantly improve readability.
+  
+  */
+
+//user answers pushed here
 let user_answer = [
 
 ];
+//multi-dimensional array, holds all potential answers for these questions
 let answer = [
   ['y', 'yes', 'ya','i do', 'ye', 'yee', 'yaa', 'why yes, i do', 'affirmative', 'mmhmm', 'yes, mx'],
   ['n', 'no', 'nope', 'i do not', 'nyop', 'yeet', 'as a matter of fact, i do not', 'negaitve', 'no, mx'],
@@ -59,7 +79,7 @@ default:
   break;
 }
 
-//establishes like_books as an boolean of books in in answer
+/* establishes like_books as an boolean of books in in answer. Currently returns undefined - I believe this is a variable scope issue. Working on a fix, sleep took precidence. */
 var like_books = answer[0].includes(book.toLowerCase());
 
 //Begining of 2nd switch statement
@@ -96,7 +116,8 @@ console.log('Asked what user likes to drink, result:'+drink);
 alert('I wonder if there are any '+art+' artists that use '+drink+' as a medium. Do you know of any, '+affirmed_name+'? Neither do I.');
 user_answer.push(drink);
 
-//establishes a boolean for comic_book
+/*establishes a boolean for comic_book in answer. Currently returns undefined - I believe this is a variable scope issue. Working on a fix, sleep took precidence. */
+
 var comic_book = answer[0].includes(like_comic.toLowerCase());
 
 switch(comic_book){
@@ -121,22 +142,30 @@ default:
   break;
 }
 
+/*this for loop should check answer[12][1] and see if the user input 2 or two. If they did it shuold break and tell them how many tries it took to guess, if they did not it should return a custom statement based on hi or low. It is a work in progress*/
+
 for(var i = 0; i < 5; i++){
-  var cats = (answer[10][1]);
-  var user_cats = prompt ('How many cats do you think I have?', 'Answer with a number!');
-  if (user_cats === (answer[10][1])){
+  var cats = answer[12][1];
+  var user_cats = prompt('How many cats do you think I have?', 'Answer with a number!');
+  console.log('asked the user if they knew how many cats I have, result: '+ user_cats);
+  user_answer.push(user_cats);
+
+  if (user_cats === answer[12][1]){
     alert('That is correct! I have '+cats+'! It took you '+i+' tries to guess that.');
     break;
   }else if(user_cats > 2){
     alert('Oh man, thats way more cats than I have. But you know, that is the dream.');
+  }else if(user_cats < 2){
+    alert('I have more than that! I really like cats.');
   } //need to indicate if the guess was too high or too low
 }
 
 console.log('Asked user how many cats they thought I had, result:' +user_cats);
 user_answer.push(user_cats);
 
-// feedback on how many tries (alert i?)
 
+
+/*this while loop should iterate through answer[13] until it determines if the user entered one of my cats names. Currently, it does not.*/
 
 var e = 1;
 var flag=false;
@@ -148,11 +177,10 @@ while (e < 7){
     }
   }
   if (flag){
-    alert('How did you know I call, '+user_cat_name+' '+user_cat_name+'? It only took you '+e+' tries!');
+    alert('How did you know I call, '+user_cat_name+' '+user_cat_name+'? It only took you '+e+' tries! I also call them'+answer[13]);
     break;
-  }
+  } else (e++);
 }
 
-//loop 2 - What one of the names I might call my one of my cat(s)?
-//6 tries
+
 //stretch: alternate text for guessing salem vs bynx
