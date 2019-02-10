@@ -51,6 +51,8 @@ var drink_flag = false;
 var get_to_know_flag = false;
 var like_comic_flag = false;
 var cat_flag = false;
+var number_flag = false;
+
 //Function List
 
 //This is the basic function that runs all of my questions.
@@ -189,20 +191,28 @@ if(affirmed_name_flag){
       console.log(drink);
     }
   }
-  /* -1 The cat guessing Q runs 5 times and the array that holds that answer (line 41) needs some tweaking to get to the answer 2 */
+  //asks how many cats I have, user can answer 2 or two
 
-  for(var i = 0; i < 5; i++){
+  for(var guesses = 1; guesses < 5; guesses++){
     var user_cats = question (12,1, affirmed_name, 'A number, like 1, 2, 3, 90000, ect.');
-    var cats = answer[12][2];
-    if (user_cats === answer[12][2]){
-      alert('That is correct! I have '+cats+'! It took you '+i+' tries to guess that.');
-      break;
-    }else if(user_cats > 2){
+    var cat_array = answer[12][2];
+    for( var c=0; c < cat_array.length; c++){
+      if (user_cats === cat_array[c]){
+        alert('That is correct! I have '+cat_array[c]+'! It took you '+guesses+' tries to guess that.');
+        number_flag = true;
+      }
+    }
+    if(user_cats > 2){
       alert('Oh man, thats way more cats than I have. But you know, that is the dream.');
+
     }else if(user_cats < 2){
       alert('I have more than that! I really like cats.');
     }
+    if(number_flag){
+      break;
+    }
   }
+
   console.log(user_cats);
 
 
@@ -212,18 +222,19 @@ if(affirmed_name_flag){
 -1 The last Q about cats is in an infinite loop.  Have a look at the if else structure.  Is that last else, where you increment e++, necessary?  .
 */
 
+  // eslint-disable-next-line no-debugger
   debugger;
   do {
     for (var o=0; o<answer[13].length; o++){
       console.log(o);
       var user_cat_name = question (13, 1, affirmed_name, 'A good thing to call a cat, like Oliver, Simba, Luna, Cutie-Pie, My Little Nusiance, ect.');
       console.log (user_cat_name);
-      if (user_cat_name === answer[13][o]){
+      if (user_cat_name === answer[13][o].toLowerCase){
         cat_flag=true;
         console.log(cat_flag);
       }
       if (cat_flag){
-        alert('How did you know I call, '+user_cat_name+' '+user_cat_name+'? It only took you x tries! I also call them'+answer[13]);
+        alert('How did you know I call, '+user_cat_name+' '+user_cat_name+'? It only took you x tries! I also call them'+answer[13][2:]);
         break;
       }
     }
