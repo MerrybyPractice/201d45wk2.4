@@ -129,7 +129,7 @@ if(affirmed_name_flag){
       //5. Y/N - This should run if they answer no to having disucssed books.
     case false:
 
-      var like_comic = question(8, 1, affirmed_name, 'Yes or No');
+      var like_comic = question(7, 1, affirmed_name, 'Yes or No');
       console.log(like_comic);
       like_comic_flag = true;
       break;
@@ -174,15 +174,21 @@ if(affirmed_name_flag){
   /*this for loop should check answer[12][1] and see if the user input 2 or two. If they did it shuold break and tell them how many tries it took to guess, if they did not it should return a custom statement based on hi or low. It is a work in progress.
 //These next two questions are looking for strings*/
 
-  var art = question (9, 1, affirmed_name, 'Style of Art, like Impressionism, Pop Surrealism, Found Object, ect.');
-  art_flag = true;
-  alert('Well '+affirmed_name+' I quite enjoy '+art+' myself! Fancy that.');
-  console.log(art);
+  if (art_flag){
+    var art = question (9, 1, affirmed_name, 'Style of Art, like Impressionism, Pop Surrealism, Found Object, ect.');
+    art_flag = true;
+    alert('Well '+affirmed_name+' I quite enjoy '+art+' myself! Fancy that.');
+    console.log(art);
+  }
 
-  var drink = question (10, 1, affirmed_name, 'A fluid that is safe for human consumption, like coffee or gin.');
-  drink_flag = true;
-  alert('I wonder if there are any '+art+' artists that use '+drink+' as a medium. Do you know of any, '+affirmed_name+'? Neither do I.');
-  console.log(drink);
+  if (art_flag){
+    var drink = question (10, 1, affirmed_name, 'A fluid that is safe for human consumption, like coffee or gin.');
+    drink_flag = true;
+    if (drink_flag){
+      alert('I wonder if there are any '+art+' artists that use '+drink+' as a medium. Do you know of any, '+affirmed_name+'? Neither do I.');
+      console.log(drink);
+    }
+  }
   /* -1 The cat guessing Q runs 5 times and the array that holds that answer (line 41) needs some tweaking to get to the answer 2 */
 
   for(var i = 0; i < 5; i++){
@@ -206,24 +212,25 @@ if(affirmed_name_flag){
 -1 The last Q about cats is in an infinite loop.  Have a look at the if else structure.  Is that last else, where you increment e++, necessary?  .
 */
 
-  var e = 0;
-
-  while (e < 7){
-    var user_cat_name = question (13, 1, affirmed_name, 'A good thing to call a cat, like Oliver, Simba, Luna, Cutie-Pie, My Little Nusiance, ect.');
+  debugger;
+  do {
     for (var o=0; o<answer[13].length; o++){
+      console.log(o);
+      var user_cat_name = question (13, 1, affirmed_name, 'A good thing to call a cat, like Oliver, Simba, Luna, Cutie-Pie, My Little Nusiance, ect.');
+      console.log (user_cat_name);
       if (user_cat_name === answer[13][o]){
         cat_flag=true;
+        console.log(cat_flag);
       }
       if (cat_flag){
-        alert('How did you know I call, '+user_cat_name+' '+user_cat_name+'? It only took you '+e+' tries! I also call them'+answer[13]);
+        alert('How did you know I call, '+user_cat_name+' '+user_cat_name+'? It only took you x tries! I also call them'+answer[13]);
         break;
-      } else {
-        e++;
       }
     }
+  }while (!cat_flag);
 
-  }
   console.log(user_cat_name);
-}
+
 
 //stretch: alternate text for guessing salem vs bynx
+}
