@@ -59,8 +59,8 @@ var counter_flag = 0;
 //Function List
 
 //This is the basic function that runs all of my questions.
-function question( row, column, affirmed_name, box_text, input){
-  var input = prompt(affirmed_name +' '+answer[row][column], box_text);
+function question( row, column, affirmed_name, row_prompt, column_prompt, input){
+  var input = prompt(affirmed_name +' '+answer[row][column], answer[row_prompt][column_prompt]);
   console.log(answer[15][1] +answer[row][column]+answer[15],[2]+input);
   user_answer.push(input);
   return input;
