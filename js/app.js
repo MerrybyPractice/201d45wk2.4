@@ -4,7 +4,8 @@
 
   add var and counter for tracking true answers then alert that tells the user how they did.
 
-  functioning for and while loops
+  further function functionality
+
 
 Stretch:
 
@@ -39,7 +40,7 @@ let answer = [
   ['Question 8', 'What do you like to drink?'],
   ['Question 9', 'We should get drinks! When are you avaliable?'],
   ['Question 10', 'How Many Cats do I have?', ['2', 'two'], '1', 'one', '3', 'three'],
-  ['Question 11', 'What is one of the names I might call my cat(s)?','salem', 'bynx', 'thackerina bynx', 'sir. salem whitton', 'sir. whitton', 'thackerina ballerina', 'bynxi','bug', 'menace','little man'],
+  ['Question 11', 'What is one of the names I might call my cat(s)?',['salem', 'bynx', 'thackerina bynx', 'sir. salem whitton', 'sir. whitton', 'thackerina ballerina', 'bynxi','bug', 'menace','little man']],
   ['Question 12', ' it sounds like we might know each other. Can you tell me a bit about yourself?'],
 ];
 //Question Asked flags
@@ -52,16 +53,30 @@ var get_to_know_flag = false;
 var like_comic_flag = false;
 var cat_flag = false;
 var number_flag = false;
+var counter_flag = 0;
+
 
 //Function List
 
 //This is the basic function that runs all of my questions.
-function question( row, column, affirmed_name, box_text){
+function question( row, column, affirmed_name, box_text, input){
   var input = prompt(affirmed_name +' '+answer[row][column], box_text);
   console.log('Asked,' +answer[row][column]+input);
   user_answer.push(input);
   return input;
+
 }
+
+//This is the function that adds to my score counter
+function score(row, user_answer){
+  if (answer[row].includes(user_answer.toLowerCase())){
+    counter_flag++;
+    return counter_flag;
+  }
+}
+
+
+
 // //Ask the User their name, store in console.
 var affirmed_name = prompt('Hello! What is your name?', 'Your Name Here');
 affirmed_name_flag = true;
@@ -75,13 +90,17 @@ if(affirmed_name_flag){
   var horror = question(4, 1, affirmed_name, 'Yes or No');
   horror_flag = true;
   console.log(horror);
+  score(0, horror);
+  console.log(counter_flag);
 
   //checks if the horror question has been asked
 
   if (horror_flag){
 
-    // establishes like_horror as an boolean of if horror is in answer
+    //establishes like_horror as an boolean of if horror is in answer
     var like_horror = answer[0].includes(horror.toLowerCase());
+
+
 
     // begining of the horror question switch statement
     switch (like_horror) {
@@ -100,6 +119,8 @@ if(affirmed_name_flag){
       var like_art= question(6, 1, affirmed_name, 'Yes or No');
       console.log(like_art);
       art_flag = true;
+      score(0, like_art);
+      console.log(score);
       break;
 
       //This should run if they answer in a way other than yes or no.
@@ -148,8 +169,6 @@ if(affirmed_name_flag){
 
   if(like_comic_flag){
 
-    /*establishes a boolean for comic_book in answer. Currently returns undefined - I believe this is a variable scope issue. Working on a fix, sleep took precidence. */
-
     var comic_book = answer[0].includes(like_comic.toLowerCase());
 
     switch(comic_book){
@@ -173,8 +192,6 @@ if(affirmed_name_flag){
       break;
     }
   }
-  /*this for loop should check answer[12][1] and see if the user input 2 or two. If they did it shuold break and tell them how many tries it took to guess, if they did not it should return a custom statement based on hi or low. It is a work in progress.
-//These next two questions are looking for strings*/
 
   if (art_flag){
     var art = question (9, 1, affirmed_name, 'Style of Art, like Impressionism, Pop Surrealism, Found Object, ect.');
@@ -191,6 +208,11 @@ if(affirmed_name_flag){
       console.log(drink);
     }
   }
+
+  //These next two questions are looking for strings
+
+  /*this for loop checks answer[12][1] to see if the user input 2 or two. If they did it shuold break and tell them how many tries it took to guess, if they did not it should return a custom statement based on high or low.*/
+
   //asks how many cats I have, user can answer 2 or two
 
   for(var guesses = 1; guesses < 5; guesses++){
@@ -199,6 +221,8 @@ if(affirmed_name_flag){
     for( var c=0; c < cat_array.length; c++){
       if (user_cats === cat_array[c]){
         alert('That is correct! I have '+cat_array[c]+'! It took you '+guesses+' tries to guess that.');
+        score(12, user_cats);
+        console.log(counter_flag);
         number_flag = true;
       }
     }
@@ -217,31 +241,35 @@ if(affirmed_name_flag){
 
 
 
-  /*this while loop should iterate through answer[13] until it determines if the user entered one of my cats names. Currently, it does not.
+  /*this for loop iterates through answer[13][2] until it determines if the user entered one of my cats names. */
 
--1 The last Q about cats is in an infinite loop.  Have a look at the if else structure.  Is that last else, where you increment e++, necessary?  .
-*/
+  for (var tries=1; tries< 7; tries++){
+    console.log(tries);
+    var user_cat_name = question (13, 1, affirmed_name, 'A good thing to call a cat, like Oliver, Simba, Luna, Cutie-Pie, My Little Nusiance, ect.');
+    console.log (user_cat_name.toLowerCase(), ' is the name they chose');
+    var cat_name_array = answer[13][2];
+    console.log(cat_name_array);
+    for(var n=0; n<cat_name_array.length; n++){
 
-  // eslint-disable-next-line no-debugger
-  debugger;
-  do {
-    for (var o=0; o<answer[13].length; o++){
-      console.log(o);
-      var user_cat_name = question (13, 1, affirmed_name, 'A good thing to call a cat, like Oliver, Simba, Luna, Cutie-Pie, My Little Nusiance, ect.');
-      console.log (user_cat_name);
-      if (user_cat_name === answer[13][o].toLowerCase){
+      if (user_cat_name.toLowerCase() === cat_name_array[n]){
         cat_flag=true;
         console.log(cat_flag);
-      }
-      if (cat_flag){
-        alert('How did you know I call, '+user_cat_name+' '+user_cat_name+'? It only took you x tries! I also call them'+answer[13].slice(2-11));
-        break;
+        score(13, user_cat_name);
+        console.log(counter_flag);
       }
     }
-  }while (!cat_flag);
+    if (cat_flag){
+
+      alert('How did you know I call, '+user_cat_name+' '+user_cat_name+'? It only took you '+tries+' tries! I also call them'+cat_name_array);
+      break;
+
+    } if (!cat_flag){
+      alert( 'Thats an awful thing to say! Who would call their cat that? Not me, thats for sure!');
+    }
+  }
 
   console.log(user_cat_name);
 
-
-//stretch: alternate text for guessing salem vs bynx
 }
+alert('Oh! Also, you got '+counter_flag+' questions correct. Not that I was keeping track or anything.');
+
