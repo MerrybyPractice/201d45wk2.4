@@ -2,8 +2,6 @@
 
 /*Still need:
 
-  add var and counter for tracking true answers then alert that tells the user how they did.
-
   further function functionality
 
 
@@ -30,19 +28,21 @@ let answer = [
   ['y', 'yes', 'ya','i do', 'ye', 'yee', 'yaa', 'why yes, i do', 'affirmative', 'mmhmm', 'yes, mx'],
   ['n', 'no', 'nope', 'i do not', 'nyop', 'yeet', 'as a matter of fact, i do not', 'negaitve', 'no, mx'],
   ['That dosent seem like the kind of answer I asked for...','Hmmmm....I\'m not sure what your saying...','Are you sure you really want to be talking to me?', 'We should get drinks some time! When works for you?', 'Are you sure you really want to be talking to me?'],
-  ['Question 1', 'Hello! What is your name?'],
-  ['Question 2', ' Do you know if I like the Horror genre or not?'],
+  ['Question 1', 'Hello! What is your name?', 'Your Name Here.','Asked for a name, result: '],
+  ['Question 2', ' Do you know if I like the Horror genre or not?', 'Spot on! I enjoy most forms of it immensly, but most of all I love reading horror novels and comic books.','Well, I do. And let me tell you, Vampires are the best! I also like fictional spider based monsters (but not the real ones!), and stories that play on our existential fears.'],
   ['Question 3', 'Have we ever discussed books?'],
   ['Question 4', 'Can you tell me a bit about yourself?'],
-  ['Question 5', 'Do you like comics?'],
+  ['Question 5', 'Do you like comics?', 'What is your favorite comic?', 'Asked user what their favorite comic was ', '? Not everyone does, thats why I asked. Well, it has been lovely talking to you! I would love to talk more about',' sometime.',],
   ['Question 6', 'Do you think I like art?'],
-  ['Question 7', 'What is your favorite style of art?'],
-  ['Question 8', 'What do you like to drink?'],
-  ['Question 9', 'We should get drinks! When are you avaliable?'],
-  ['Question 10', 'How Many Cats do I have?', ['2', 'two'], '1', 'one', '3', 'three'],
-  ['Question 11', 'What is one of the names I might call my cat(s)?',['salem', 'bynx', 'thackerina bynx', 'sir. salem whitton', 'sir. whitton', 'thackerina ballerina', 'bynxi','bug', 'menace','little man']],
+  ['Question 7', 'What is your favorite style of art?', 'Style of Art, like Impressionism, Pop Surrealism, Found Object, ect.', 'Well ', ' I quite enjoy ', ' myself! Fancy that.', ],
+  ['Question 8', 'What do you like to drink?','A fluid that is safe for human consumption, like coffee or gin.','I wonder if there are any ',' artists that use ',' as a medium. Do you know of any, ','? Neither do I.'],
+  ['Question 9', 'We should get drinks! When are you avaliable?', 'Oh, Wow! ', '? That is awesome! Woundn\'t it be cool if an issue was done in ', ' style? Well, ',' you seem really cool.', 'Asked user when they would be avaliable for drinks, returned:'],
+  ['Question 10', 'How Many Cats do I have?', ['2', 'two'], '1', 'one', '3', 'three','A number, like 1, 2, 3, 90000, ect.', 'That is correct! I have ','! It took you ',' tries to guess that.','Oh man, thats way more cats than I have. But you know, that is the dream.','I have more than that! I really like cats.'],
+  ['Question 11', 'What is one of the names I might call my cat(s)?',['salem', 'bynx', 'thackerina bynx', 'sir. salem whitton', 'sir. whitton', 'thackerina ballerina', 'bynxi','bug', 'menace','little man'], 'A good thing to call a cat, like Oliver, Simba, Luna, Cutie-Pie, My Little Nusiance, ect.',' is the name they chose', 'How did you know I call, ','? It only took you ',' tries! I also call them','Thats an awful thing to say! Who would call their cat that? Not me, thats for sure!',],
   ['Question 12', ' it sounds like we might know each other. Can you tell me a bit about yourself?'],
+  ['Yes or No.', 'Asked', 'result: ','Oh! Also, you got','questions correct. Not that I was keeping track or anything.']
 ];
+
 //Question Asked flags
 var affirmed_name_flag = false;
 var horror_flag = false;
@@ -61,36 +61,35 @@ var counter_flag = 0;
 //This is the basic function that runs all of my questions.
 function question( row, column, affirmed_name, box_text, input){
   var input = prompt(affirmed_name +' '+answer[row][column], box_text);
-  console.log('Asked,' +answer[row][column]+input);
+  console.log(answer[15][1] +answer[row][column]+answer[15],[2]+input);
   user_answer.push(input);
   return input;
 
 }
 
 //This is the function that adds to my score counter
-function score(row, user_answer){
-  if (answer[row].includes(user_answer.toLowerCase())){
+function score(correct_array, user_answer){
+  if (correct_array.includes(user_answer.toLowerCase())){
     counter_flag++;
-    return counter_flag;
   }
 }
 
 
 
 // //Ask the User their name, store in console.
-var affirmed_name = prompt('Hello! What is your name?', 'Your Name Here');
+var affirmed_name = prompt(answer[3][1], answer[3][2]);
 affirmed_name_flag = true;
-console.log('Asked for a name, result:'+affirmed_name);
+console.log(answer[3][3]+affirmed_name);
 user_answer.push(affirmed_name);
 if(affirmed_name_flag){
 
   //1.Y/N - leads into the switch statement below
 
   //1. Do I like Horror?
-  var horror = question(4, 1, affirmed_name, 'Yes or No');
+  var horror = question(4, 1, affirmed_name, answer[15],[0]);
   horror_flag = true;
   console.log(horror);
-  score(0, horror);
+  score(answer[0], horror);
   console.log(counter_flag);
 
   //checks if the horror question has been asked
@@ -107,25 +106,25 @@ if(affirmed_name_flag){
 
     //2.Y/N - This should run if horror is in answer[0].
     case true:
-      alert('Spot on! I enjoy most forms of it immensly, but most of all I love reading horror novels and comic books.');
-      var book = question(5, 1, affirmed_name, 'Yes or No');
+      alert(answer[4][2]);
+      var book = question(5, 1, affirmed_name, answer[15],[0]);
       console.log(book);
       book_flag = true;
       break;
 
       //3.Y/N - This should run if horror is in answer[1].
     case false:
-      alert('Well, I do. And let me tell you, Vampires are the best! I also like fictional spider based monsters (but not the real ones!), and stories that play on our existential fears.');
-      var like_art= question(6, 1, affirmed_name, 'Yes or No');
+      alert(answer[4][3]);
+      var like_art= question(6, 1, affirmed_name, answer[15],[0]);
       console.log(like_art);
       art_flag = true;
-      score(0, like_art);
+      score(answer[0], like_art);
       console.log(score);
       break;
 
       //This should run if they answer in a way other than yes or no.
     default:
-      alert('That dosent seem like the kind of answer I asked for...');
+      alert(answer[2][0]);
       break;
     }
   }
@@ -144,7 +143,7 @@ if(affirmed_name_flag){
     //4.Y/N - This should run if they answer yes to having discussed books.
     case true:
 
-      var get_to_know = question(14, 1, affirmed_name, 'Yes or No');
+      var get_to_know = question(14, 1, affirmed_name, answer[15],[0]);
       console.log(get_to_know);
       get_to_know_flag = true;
       break;
@@ -152,7 +151,7 @@ if(affirmed_name_flag){
       //5. Y/N - This should run if they answer no to having disucssed books.
     case false:
 
-      var like_comic = question(7, 1, affirmed_name, 'Yes or No');
+      var like_comic = question(7, 1, affirmed_name, answer[15],[0]);
       console.log(like_comic);
       like_comic_flag = true;
       break;
@@ -174,17 +173,17 @@ if(affirmed_name_flag){
     switch(comic_book){
 
     case true:
-      var comic = prompt('What is your favorite comic?');
-      console.log('Asked user what their favorite comic was '+ comic);
+      var comic = prompt(answer[7][2]);
+      console.log(answer[7][3]+ comic);
       user_answer.push(comic);
 
-      var avil_date = prompt ('Oh, Wow! '+comic+'? That is awesome! Woundn\'t it be cool if an issue was done in '+art+' style? Well, '+affirmed_name+' you seem really cool.'+ answer[2][3]);
-      console.log('Asked user when they would be avaliable for drinks, returned:'+avil_date);
+      var avil_date = prompt (answer[11][2]+comic+answer[11][3] +art+answer[11][4]+affirmed_name+answer[11][4]+ answer[2][3]);
+      console.log(answer[11][4]+avil_date);
       user_answer.push(avil_date);
       break;
 
     case false:
-      alert (like_comic+'? Not everyone does, thats why I asked. Well, it has been lovely talking to you! I would love to talk more about'+art+'sometime.'+ answer[2][3]);
+      alert (like_comic+answer[7][4]+art+answer[7][5]+ answer[2][3]);
       break;
 
     default:
@@ -194,17 +193,17 @@ if(affirmed_name_flag){
   }
 
   if (art_flag){
-    var art = question (9, 1, affirmed_name, 'Style of Art, like Impressionism, Pop Surrealism, Found Object, ect.');
+    var art = question (9, 1, affirmed_name, answer[9][2]);
     art_flag = true;
-    alert('Well '+affirmed_name+' I quite enjoy '+art+' myself! Fancy that.');
+    alert(answer[9][3]+affirmed_name+answer[9][4]+art+answer[9][5]);
     console.log(art);
   }
 
   if (art_flag){
-    var drink = question (10, 1, affirmed_name, 'A fluid that is safe for human consumption, like coffee or gin.');
+    var drink = question (10, 1, affirmed_name, answer[10][2]);
     drink_flag = true;
     if (drink_flag){
-      alert('I wonder if there are any '+art+' artists that use '+drink+' as a medium. Do you know of any, '+affirmed_name+'? Neither do I.');
+      alert(answer[10][3]+art+answer[10][4]+drink+answer[10][5]+affirmed_name+answer[10][6]);
       console.log(drink);
     }
   }
@@ -216,21 +215,21 @@ if(affirmed_name_flag){
   //asks how many cats I have, user can answer 2 or two
 
   for(var guesses = 1; guesses < 5; guesses++){
-    var user_cats = question (12,1, affirmed_name, 'A number, like 1, 2, 3, 90000, ect.');
+    var user_cats = question (12,1, affirmed_name, answer[12][7]);
     var cat_array = answer[12][2];
     for( var c=0; c < cat_array.length; c++){
       if (user_cats === cat_array[c]){
-        alert('That is correct! I have '+cat_array[c]+'! It took you '+guesses+' tries to guess that.');
-        score(12, user_cats);
+        alert(answer[12][8]+cat_array[c]+answer[12][9]+guesses+answer[12][10]);
+        score(answer[12][1], user_cats);
         console.log(counter_flag);
         number_flag = true;
       }
     }
     if(user_cats > 2){
-      alert('Oh man, thats way more cats than I have. But you know, that is the dream.');
+      alert(answer[12][11]);
 
     }else if(user_cats < 2){
-      alert('I have more than that! I really like cats.');
+      alert(answer[12][12]);
     }
     if(number_flag){
       break;
@@ -245,8 +244,8 @@ if(affirmed_name_flag){
 
   for (var tries=1; tries< 7; tries++){
     console.log(tries);
-    var user_cat_name = question (13, 1, affirmed_name, 'A good thing to call a cat, like Oliver, Simba, Luna, Cutie-Pie, My Little Nusiance, ect.');
-    console.log (user_cat_name.toLowerCase(), ' is the name they chose');
+    var user_cat_name = question (13, 1, affirmed_name, answer[13][3]);
+    console.log (user_cat_name.toLowerCase(), answer[13][4]);
     var cat_name_array = answer[13][2];
     console.log(cat_name_array);
     for(var n=0; n<cat_name_array.length; n++){
@@ -260,16 +259,16 @@ if(affirmed_name_flag){
     }
     if (cat_flag){
 
-      alert('How did you know I call, '+user_cat_name+' '+user_cat_name+'? It only took you '+tries+' tries! I also call them'+cat_name_array);
+      alert(answer[13][5]+user_cat_name+answer[13][6]+user_cat_name+tries+answer[13][7]+cat_name_array);
       break;
 
     } if (!cat_flag){
-      alert( 'Thats an awful thing to say! Who would call their cat that? Not me, thats for sure!');
+      alert(answer[13][8]);
     }
   }
 
   console.log(user_cat_name);
 
 }
-alert('Oh! Also, you got '+counter_flag+' questions correct. Not that I was keeping track or anything.');
+alert(answer[15][3]+counter_flag+answer[15][4]);
 
