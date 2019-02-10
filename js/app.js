@@ -234,7 +234,7 @@ if(affirmed_name_flag){
         console.log(cat_flag);
       }
       if (cat_flag){
-        alert('How did you know I call, '+user_cat_name+' '+user_cat_name+'? It only took you x tries! I also call them'+answer[13][2:]);
+        alert('How did you know I call, '+user_cat_name+' '+user_cat_name+'? It only took you x tries! I also call them'+answer[13].slice(2-11));
         break;
       }
     }
