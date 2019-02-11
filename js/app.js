@@ -40,7 +40,7 @@ let answer = [
   ['Question 10', 'How Many Cats do I have?', ['2', 'two'], '1', 'one', '3', 'three','A number, like 1, 2, 3, 90000, ect.', 'That is correct! I have ','! It took you ',' tries to guess that.','Oh man, thats way more cats than I have. But you know, that is the dream.','I have more than that! I really like cats.'],
   ['Question 11', 'What is one of the names I might call my cat(s)?',['salem', 'bynx', 'thackerina bynx', 'sir. salem whitton', 'sir. whitton', 'thackerina ballerina', 'bynxi','bug', 'menace','little man'], 'A good thing to call a cat, like Oliver, Simba, Luna, Cutie-Pie, My Little Nusiance, ect.',' is the name they chose', 'How did you know I call, ','? It only took you ',' tries! I also call them ','Thats an awful thing to say! Who would call their cat that? Not me, thats for sure!', ', '],
   ['Question 12', ' it sounds like we might know each other. Can you tell me a bit about yourself?'],
-  ['Yes or No.', 'Asked: ', 'result: ','Oh! Also, you got','questions correct. Not that I was keeping track or anything.']
+  ['Yes or No.', 'Asked: ', 'result: ','Oh! Also, you got ',' questions correct. Not that I was keeping track or anything.']
 ];
 
 //Question Asked flags
